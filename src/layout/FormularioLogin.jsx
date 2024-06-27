@@ -1,4 +1,5 @@
 import {useState,useEffect} from 'react'
+import ModalTerminoCondicion from '../../src/components/modales/ModalTerminoCondicion';
 import { useNavigate } from 'react-router-dom'
 import { IoCardSharp } from "react-icons/io5";
 
@@ -12,6 +13,9 @@ const FormularioLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState(false);
   const [password, setPassword] = useState(false);
+
+  const [abrirModal, setAbrirModal] = useState(true);
+
 
   const navigate = useNavigate();
 
@@ -52,6 +56,10 @@ const FormularioLogin = () => {
   
   return (
     <>
+      <ModalTerminoCondicion
+        open={abrirModal}
+        onClose={() => setAbrirModal(false)}
+      />
       <div className=' w-[80%] md:w-1/2 bg-white/50 block xl:flex justify-center rounded-lg'>
           <form 
             onSubmit={(e)=>fetchingLogin(e)}
